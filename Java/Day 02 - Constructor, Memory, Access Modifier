@@ -1,0 +1,229 @@
+</> Markdown
+
+# Day 02 - Constructor, Memory, Access Modifier
+
+## 🎯 Today's Goal
+
+Understand how Java creates an object and why access modifiers (`public`, `private`) are important.
+
+---
+
+# 1. Object Creation Process
+
+When Java executes the following code:
+
+```java
+User user = new User("Sehyeon", 24);
+```
+
+The process is:
+
+1. The `new` keyword creates a new object.
+2. Memory is allocated in the Heap.
+3. The constructor is called.
+4. The constructor initializes the object's fields.
+5. A reference to the object is returned.
+6. The reference is stored in the variable `user`.
+
+---
+
+# 2. Stack and Heap
+
+## Stack
+
+- Stores local variables and references.
+- Faster memory.
+- Automatically removed when a method ends.
+
+Example
+
+```java
+User user;
+```
+
+The variable `user` is stored in the Stack.
+
+---
+
+## Heap
+
+- Stores actual objects.
+- Objects remain until they are no longer used.
+
+Example
+
+```java
+new User("Sehyeon", 24);
+```
+
+The actual `User` object is created in the Heap.
+
+---
+
+## Memory Structure
+
+```text
+Stack
+
+user
+ │
+ │ Reference
+ ▼
+
+Heap
+
+┌─────────────────────┐
+│ name = "Sehyeon"    │
+│ age = 24            │
+└─────────────────────┘
+```
+
+**Important**
+
+The variable does **not** store the object itself.
+
+It stores a **reference** to the object.
+
+---
+
+# 3. Why does Java use references?
+
+If Java copied every object,
+
+```java
+User user2 = user1;
+```
+
+would duplicate the entire object.
+
+For large objects, this would waste both memory and time.
+
+Instead,
+
+Java stores only a reference (location) to the object.
+
+This makes programs faster and more memory-efficient.
+
+---
+
+# 4. Constructor
+
+A constructor is automatically called when an object is created.
+
+Example
+
+```java
+class User {
+
+    String name;
+    int age;
+
+    User(String name, int age){
+        this.name = name;
+        this.age = age;
+    }
+
+}
+```
+
+The constructor initializes the object with the given values.
+
+---
+
+# 5. Access Modifiers
+
+## public
+
+Can be accessed from anywhere.
+
+Example
+
+```java
+public void login(){
+
+}
+```
+
+---
+
+## private
+
+Can only be accessed inside the same class.
+
+Example
+
+```java
+private String password;
+```
+
+Outside the class,
+
+```java
+user.password = "1234";
+```
+
+❌ Not allowed.
+
+Inside the class,
+
+```java
+password = "1234";
+```
+
+✅ Allowed.
+
+---
+
+# 6. Why use private?
+
+Using `private` protects important data.
+
+Instead of
+
+```java
+user.password = "1234";
+```
+
+we use
+
+```java
+user.changePassword("1234");
+```
+
+This allows us to
+
+- validate input
+- add security
+- change the implementation later
+- prevent invalid data
+
+This idea is called **Encapsulation**.
+
+---
+
+# 7. What I Learned
+
+- `new` creates an object in the Heap.
+- A constructor initializes the object.
+- Variables store references, not actual objects.
+- `private` protects data from direct access.
+- Methods make it easier to add validation and new features.
+
+---
+
+# 8. English Expressions
+
+- The `new` keyword creates a new object.
+- Objects are stored in the Heap.
+- Variables store references to objects.
+- A constructor initializes an object.
+- Private fields cannot be accessed directly.
+- Encapsulation protects an object's data.
+
+---
+
+# 9. Questions
+
+- Why are references more efficient than copying objects?
+- When should a field be `public` or `private`?
+- How does Java know where an object is stored in memory?
