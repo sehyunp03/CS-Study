@@ -1,5 +1,3 @@
-</> Markdown
-
 # Day 01 - Claass and Object
 
 ## Today's Goal
