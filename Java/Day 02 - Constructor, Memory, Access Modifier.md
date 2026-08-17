@@ -1,5 +1,3 @@
-</> Markdown
-
 # Day 02 - Constructor, Memory, Access Modifier
 
 ## 🎯 Today's Goal
